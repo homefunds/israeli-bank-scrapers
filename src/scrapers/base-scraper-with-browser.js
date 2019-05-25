@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 
 import { BaseScraper } from './base-scraper';
 import { SCRAPE_PROGRESS_TYPES, LOGIN_RESULT, GENERAL_ERROR } from '../constants';
@@ -67,7 +67,12 @@ class BaseScraperWithBrowser extends BaseScraper {
     if (typeof this.options.browser !== 'undefined' && this.options.browser !== null) {
       this.browser = this.options.browser;
     } else {
-      this.browser = await puppeteer.launch({ env, headless: !this.options.showBrowser });
+      const executablePath = this.options.executablePath || undefined;
+      this.browser = await puppeteer.launch({
+        env,
+        headless: !this.options.showBrowser,
+        executablePath,
+      });
     }
 
     const pages = await this.browser.pages();
