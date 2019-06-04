@@ -45,7 +45,7 @@
     "inquirer": "^6.1.0",
     "json2csv": "^4.2.1",
     "jsonfile": "^5.0.0",
-    "pre-commit": "^1.2.2",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
